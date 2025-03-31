@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1400px;
+    height: calc(100vh - 40px);
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header {
+    padding: 15px 20px;
+    background-color: #4a90e2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3a80d2;
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.header h1 i {
+    margin-right: 8px;
+}
+
+.download-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#format-select {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    color: #4a90e2;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+#format-select:focus {
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+#download-btn {
+    background-color: white;
+    color: #4a90e2;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+#download-btn i {
+    margin-right: 6px;
+}
+
+#download-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#download-btn:active {
+    transform: translateY(0);
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.editor-container, .preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.editor-container {
+    border-right: 1px solid #e0e0e0;
+    background-color: #fafafa;
+}
+
+h2 {
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 2px;
+    display: flex;
+    align-items: center;
+}
+
+h2 i {
+    margin-right: 8px;
+    color: #4a90e2;
+}
+
+#html-editor {
+    flex: 1;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    resize: none;
+    line-height: 1.5;
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+}
+
+#html-editor:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+#preview-area {
+    flex: 1;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    overflow: auto;
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.editor-footer, .preview-footer {
+    margin-top: 8px;
+    color: #777;
+    font-size: 12px;
+    text-align: right;
+    padding: 0 5px;
+}
+
+/* 美化预览区域内的常见HTML元素 */
+#preview-area h1, #preview-area h2, #preview-area h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+#preview-area h1 {
+    font-size: 2em;
+}
+
+#preview-area h2 {
+    font-size: 1.5em;
+    display: block;
+}
+
+#preview-area h3 {
+    font-size: 1.17em;
+}
+
+#preview-area p {
+    margin-bottom: 1em;
+    line-height: 1.5;
+}
+
+#preview-area a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+#preview-area a:hover {
+    text-decoration: underline;
+}
+
+#preview-area ul, #preview-area ol {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+#preview-area li {
+    margin-bottom: 0.5em;
+}
+
+#preview-area img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em 0;
+}
+
+#preview-area table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+#preview-area th, #preview-area td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#preview-area th {
+    background-color: #f5f5f5;
+}
+
+#preview-area code {
+    background-color: #f5f5f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+#preview-area pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 1em;
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        height: auto;
+        overflow: auto;
+    }
+    
+    .container {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+    
+    .editor-container {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        min-height: 300px;
+    }
+    
+    .preview-container {
+        min-height: 300px;
+    }
+    
+    .download-options {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-end;
+    }
+    
+    #format-select, #download-btn {
+        width: 100%;
+    }
+} 

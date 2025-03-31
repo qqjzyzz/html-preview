@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML实时预览工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-code"></i> HTML实时预览工具</h1>
+            <div class="download-options">
+                <select id="format-select">
+                    <option value="png">PNG格式</option>
+                    <option value="jpg">JPG格式</option>
+                    <option value="svg">SVG格式</option>
+                    <option value="html">HTML格式</option>
+                </select>
+                <button id="download-btn"><i class="fas fa-download"></i> 下载文件</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="editor-container">
+                <h2><i class="fas fa-edit"></i> HTML代码</h2>
+                <textarea id="html-editor" placeholder="在此粘贴您的HTML代码..."></textarea>
+                <div class="editor-footer">
+                    <small>提示：粘贴HTML代码后，右侧将实时显示渲染效果</small>
+                </div>
+            </div>
+            <div class="preview-container">
+                <h2><i class="fas fa-eye"></i> 预览效果</h2>
+                <div id="preview-area"></div>
+                <div class="preview-footer">
+                    <small>快捷键：Ctrl+S 或 Command+S 可快速下载文件</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.1.1/svg.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
