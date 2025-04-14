@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             iframe.style.backgroundColor = 'white';
+            iframe.style.overflow = 'auto'; // 确保只有iframe有滚动条
+            iframe.style.display = 'block'; // 避免底部间隙
             
             // 清空预览区域并添加iframe
             previewArea.innerHTML = '';
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             line-height: 1.5;
                             color: #333;
                             box-sizing: border-box;
+                            overflow-x: hidden; /* 防止水平滚动 */
                         }
                         * {
                             box-sizing: border-box;
