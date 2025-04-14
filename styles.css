@@ -5,11 +5,16 @@
     font-family: 'Arial', sans-serif;
 }
 
-body {
+html, body {
     background-color: #f5f5f5;
+    height: 100%;
+    overflow: hidden; /* 防止主页面滚动 */
+    margin: 0;
+    padding: 0;
+}
+
+body {
     padding: 20px;
-    height: 100vh;
-    overflow: hidden;
 }
 
 .container {
@@ -21,7 +26,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden; /* 确保容器不会溢出 */
 }
 
 .header {
@@ -32,6 +37,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #3a80d2;
+    flex-shrink: 0; /* 防止头部被压缩 */
 }
 
 .header h1 {
@@ -96,15 +102,17 @@ body {
 .content {
     display: flex;
     flex: 1;
-    overflow: hidden;
+    overflow: hidden; /* 确保内容区域本身不滚动 */
+    min-height: 0; /* 关键修复：允许flex子项收缩 */
 }
 
 .editor-container, .preview-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     padding: 15px;
+    overflow: hidden; /* 确保容器本身不滚动 */
+    min-height: 0; /* 关键修复：允许flex子项收缩 */
 }
 
 .editor-container {
@@ -120,6 +128,7 @@ h2 {
     padding-left: 2px;
     display: flex;
     align-items: center;
+    flex-shrink: 0; /* 防止标题被压缩 */
 }
 
 h2 i {
@@ -139,7 +148,8 @@ h2 i {
     line-height: 1.5;
     background-color: white;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-    overflow: auto;
+    overflow: auto; /* 只有编辑器应该有自己的滚动条 */
+    min-height: 0; /* 允许编辑器区域在flex容器中收缩 */
 }
 
 #html-editor:focus {
@@ -153,10 +163,20 @@ h2 i {
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 20px;
-    overflow: auto;
     background-color: white;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-height: 0; /* 允许预览区域在flex容器中收缩 */
+    overflow: hidden; /* 预览区域本身不应该有滚动条 */
+    position: relative; /* 为内部iframe定位 */
+}
+
+/* 内部iframe样式 */
+#preview-area iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 只有iframe应该有滚动条 */
+    display: block; /* 消除iframe底部间隙 */
 }
 
 .editor-footer, .preview-footer {
@@ -165,6 +185,7 @@ h2 i {
     font-size: 12px;
     text-align: right;
     padding: 0 5px;
+    flex-shrink: 0; /* 防止页脚被压缩 */
 }
 
 /* 美化预览区域内的常见HTML元素 */
@@ -251,14 +272,15 @@ h2 i {
 
 @media (max-width: 768px) {
     body {
-        padding: 10px;
-        height: auto;
-        overflow: auto;
+        padding: 0; /* 移除小屏幕下的内边距 */
+        overflow: hidden;
     }
     
     .container {
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
     }
     
     .content {
@@ -268,11 +290,15 @@ h2 i {
     .editor-container {
         border-right: none;
         border-bottom: 1px solid #e0e0e0;
-        min-height: 300px;
+        height: 50%;
+        min-height: 0;
+        flex: 0 0 50%; /* 固定高度为50% */
     }
     
     .preview-container {
-        min-height: 300px;
+        height: 50%;
+        min-height: 0;
+        flex: 0 0 50%; /* 固定高度为50% */
     }
     
     .download-options {
