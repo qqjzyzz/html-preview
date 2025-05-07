@@ -505,4 +505,41 @@ document.addEventListener('DOMContentLoaded', function() {
             downloadAsImage();
         }
     });
+
+    // 拖拽分隔条逻辑
+    const divider = document.getElementById('drag-divider');
+    const editor = document.querySelector('.editor-container');
+    const preview = document.querySelector('.preview-container');
+    const content = document.querySelector('.content');
+
+    let isDragging = false;
+
+    if (divider && editor && preview && content) {
+        divider.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            divider.classList.add('dragging');
+            document.body.style.cursor = 'col-resize';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            const rect = content.getBoundingClientRect();
+            let offsetX = e.clientX - rect.left;
+            const minWidth = 150;
+            const maxWidth = rect.width - minWidth;
+            if (offsetX < minWidth) offsetX = minWidth;
+            if (offsetX > maxWidth) offsetX = maxWidth;
+            editor.style.width = offsetX + 'px';
+            preview.style.width = (rect.width - offsetX - divider.offsetWidth) + 'px';
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            if (isDragging) {
+                isDragging = false;
+                divider.classList.remove('dragging');
+                document.body.style.cursor = '';
+            }
+        });
+    }
 }); 
+
